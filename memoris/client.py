@@ -26,8 +26,10 @@ def post(key):
 def main():
     if len(sys.argv) == 2:
         print get(sys.argv[1])
-    elif len(sys.argv == 3):
+    elif len(sys.argv) == 3:
         print post(sys.argv[1], sys.argv[2])
+    else:
+        print "Usage:\n - get: memoris <key>\n - update: memoris <key> <value>"
 
 
 if __name__ == '__main__':
