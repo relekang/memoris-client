@@ -1,3 +1,4 @@
+import urllib
 import urllib2
 import json
 import sys
@@ -15,9 +16,12 @@ def get(key):
         pass
 
 
-def post(key):
+def post(key, value):
     try:
-        response = urllib2.urlopen("%s/%s" % (URL, key))
+        response = urllib2.urlopen(
+            "%s/%s" % (URL, key),
+            data=urllib.urlencode({'value': value})
+        )
         response.close()
     except urllib2.HTTPError:
         print "Could not save value"
