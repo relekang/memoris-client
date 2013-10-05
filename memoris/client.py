@@ -3,11 +3,9 @@ import sys
 
 from memoris.helpers import Memoris
 
-URL = 'http://n.lkng.me'
-
 
 def main():
-    memoris = Memoris(URL)
+    memoris = Memoris()
     if len(sys.argv) == 2:
         print memoris.get(sys.argv[1])
     elif len(sys.argv) == 3:

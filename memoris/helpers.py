@@ -2,6 +2,8 @@
 import urllib
 import urllib2
 import json
+import os
+import ConfigParser
 
 
 HTTP_ERROR = {
@@ -21,8 +23,13 @@ def http_error(error):
 
 class Memoris(object):
 
-    def __init__(self, url):
-        self.url = url
+    def __init__(self, url=None):
+        if url is None:
+            config = ConfigParser.ConfigParser()
+            config.read([os.path.expanduser('~/.memorisrc')])
+            self.url = config.get('memoris', 'url')
+        else:
+            self.url = url
 
     def api_request(self, path, data=None):
         try:
